@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# City Explorer
+## Asynchronous code, and APIs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Today you will be building a React application that uses the Axios library to make user-initiated reqeusts for data from a thrid-party API.
 
-## Available Scripts
+## Resources
 
-In the project directory, you can run:
+[Axios on NPM](https://www.npmjs.com/package/axios){:target="_blank"}
 
-### `npm start`
+[Location IQ Geocoding API](https://locationiq.com/docs#search-forward-geocoding){:target="_blank"} - Specifically, the "Search / Forward GeoCoding" and "Static Maps" sections.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Process
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+For every lab in this module, you will have a new partner. For this lab, you and your new partner(s) will spend the first 15 minutes planning out an approach to this lab's work on a whiteboard.
 
-### `npm test`
+1. Draw the web request-response cycle for the current lab tasks (about 15 minutes).
+   1. Document the data flow: identify inputs and outputs for each part of the cycle.
+   1. Outline the functions that support this data flow.
+   1. Be sure to include these drawings in your README.md.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You will then work independently for the rest of the day, implementing your plan, coding in your own repository, submitting your own pull request.
 
-### `npm run build`
+### Workflow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- We will be using the [Trello](https://trello.com/home){:target="_blank"} project management tool for the duration of this project.
+- To maximize your experience with Trello, you should create a free Trello account by clicking on the `Sign Up` button.
+- After creating an account, go to the [City Explorer Trello Board](https://trello.com/b/Ajj9Cbac/module-2-city-explorer){:target="_blank"}, open the "... Show Menu" link, click the "... More" link, and then click "Copy Board". Before you create it, be sure to "Change" from Private to "Public" (and click "Yes, Make Board Public") so your instructional team can see your work. Now, click "Create" to add a copy to your personal account.
+- This Trello board contains all of the features required to complete this lab assignment.
+- In the "...Show Menu" sidebar, click the "Search Cards" link and filter by lab to see the assignment for just the current day.
+- Review the user stories and analyze the feature requests and requirements in the lab.
+- Within each story, note the acceptance criteria ("Given ... When ... Then...") and the checklist of feature tasks. Be careful to execute tasks in order as they are often dependencies of one another.
+- Throughout the lab time, check off tasks as you complete them, and move the story cards through the workflow.
