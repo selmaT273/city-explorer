@@ -8,7 +8,15 @@ class App extends React.Component{
     this.state={
         haveSearched: false,
         searchedCity: '',
+        searchBarText: '',
     }
+  }
+
+  handleText = (searchBarText) => {
+    console.log(searchBarText.target.value);
+    this.setState({
+      searchBarText: searchBarText.target.value,
+    })
   }
 
   handleSearch = (searchedCity) => {
@@ -23,7 +31,7 @@ class App extends React.Component{
     return(
       <>
       <h1>City Explorer</h1>
-      <Search handleSearch={this.handleSearch}/>
+      <Search handleSearch={this.handleSearch} handleText={this.handleText}/>
       </>
     )
   }

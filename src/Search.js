@@ -5,11 +5,11 @@ class Search extends React.Component {
         e.preventDefault();
         this.props.handleSearch();
     }
-    
+
     render() {
         return (
             <form onSubmit={this.handleFormSubmit}>
-                <input type="text" />
+                <input type="text" onChange={this.props.handleText} />
                 <input type="submit" />
             </form>
         )
