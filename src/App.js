@@ -19,11 +19,12 @@ class App extends React.Component{
     })
   }
 
-  handleSearch = (searchedCity) => {
+  handleSearch = () => {
     console.log('searched');
+    console.log(this.state.searchBarText);
     this.setState({
         haveSearched: true,
-        searchedCity: searchedCity,
+        searchedCity: this.state.searchBarText,
     });
   }
 
