@@ -8,23 +8,15 @@ class App extends React.Component{
     this.state={
         haveSearched: false,
         searchedCity: '',
-        searchBarText: '',
     }
   }
 
-  handleText = (searchBarText) => {
-    console.log(searchBarText.target.value);
-    this.setState({
-      searchBarText: searchBarText.target.value,
-    })
-  }
-
-  handleSearch = () => {
+  handleSearch = (searchBarText) => {
     console.log('searched');
-    console.log(this.state.searchBarText);
+    console.log(searchBarText);
     this.setState({
         haveSearched: true,
-        searchedCity: this.state.searchBarText,
+        searchedCity: searchBarText,
     });
   }
 
