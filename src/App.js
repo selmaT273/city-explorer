@@ -4,6 +4,7 @@ import Search from './Search';
 import axios from 'axios';
 import Location from './Location';
 
+const locationKey = process.env.REACT_APP_LOCATION_KEY;
 class App extends React.Component{
   constructor(props) {
     super(props);
@@ -14,7 +15,6 @@ class App extends React.Component{
   }
 
   handleSearch = async(searchBarText) => {
-    const locationKey = process.env.REACT_APP_LOCATION_KEY;
     const locationRawData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${searchBarText}&format=json`);
     this.setState({
       haveSearched: true,
@@ -28,7 +28,7 @@ class App extends React.Component{
       <h1>City Explorer</h1>
       <Search handleSearch={this.handleSearch} />
       {this.state.haveSearched ? 
-        <Location data={this.state.locationData} key={this.locationKey} /> : 'Search for a location to see info.'}
+        <Location data={this.state.locationData} /> : 'Search for a location to see info.'}
       </>
     )
   }
