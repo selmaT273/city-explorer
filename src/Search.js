@@ -11,7 +11,7 @@ class Search extends React.Component {
     handleText = (e) => {
         this.setState({
             searchBarText: e.target.value,
-        }, () => console.log(this.state.searchBarText));
+        });
     }
 
     handleFormSubmit = (e) => {

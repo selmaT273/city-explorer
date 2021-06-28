@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import Search from './Search';
-import axios from 'axios'
+import axios from 'axios';
 
 class App extends React.Component{
   constructor(props) {
@@ -19,6 +19,9 @@ class App extends React.Component{
         haveSearched: true,
         searchedCity: searchBarText,
     });
+    const locationKey = 'pk.16bb41e97ba3c783bcd11d8dcc499330';
+    let locationData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${searchBarText}&format=json`);
+    console.log(locationData);
   }
 
   render(){
