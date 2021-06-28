@@ -19,7 +19,6 @@ class App extends React.Component{
     this.setState({
       haveSearched: true,
       locationData: locationRawData.data[0],
-      locationAPIKey: locationKey
     });
   }
 

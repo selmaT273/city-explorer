@@ -5,7 +5,7 @@ class Location extends React.Component{
         super(props);
         this.state = {
             latitude: this.props.data.lat,
-            longitude: this.props.data.lon, 
+            longitude: this.props.data.lon,
         }
     }
 
@@ -16,6 +16,7 @@ class Location extends React.Component{
             <h3>{this.props.data.display_name}</h3>
             <h4>{this.state.latitude}</h4>
             <h4>{this.state.longitude}</h4>
+            <img src={`https://maps.locationiq.com/v3/staticmap?key=${this.props.key}&center=${this.state.latitude},${this.state.longitude}`} alt='map' />
             </>
         );
     }
