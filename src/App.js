@@ -24,7 +24,7 @@ class App extends React.Component{
     return(
       <>
       <h1>City Explorer</h1>
-      <Search handleSearch={this.handleSearch} handleText={this.handleText}/>
+      {this.state.haveSearched ? '' : <Search handleSearch={this.handleSearch} handleText={this.handleText}/>}
       </>
     )
   }
