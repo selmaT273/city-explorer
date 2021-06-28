@@ -3,6 +3,9 @@
 
 Today you will be building a React application that uses the Axios library to make user-initiated reqeusts for data from a thrid-party API.
 
+## Deployment
+
+This project is currently deployed here: [City Explorer](https://city-explorer301.netlify.app)
 ## Resources
 
 [Axios on NPM](https://www.npmjs.com/package/axios){:target="_blank"}

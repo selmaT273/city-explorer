@@ -4,7 +4,6 @@ const locationKey = process.env.REACT_APP_LOCATION_KEY;
 class Location extends React.Component{
 
     render(){
-        console.log(this.props);
         return(
             <>
             <h2>Location Information:</h2>
