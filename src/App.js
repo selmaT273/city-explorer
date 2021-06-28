@@ -15,13 +15,16 @@ class App extends React.Component{
   }
 
   handleSearch = async(searchBarText) => {
-    const locationRawData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${searchBarText}&format=json`);
-    this.setState({
-      haveSearched: true,
-      locationData: locationRawData.data[0],
-    });
+    try {
+      const locationRawData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${searchBarText}&format=json`);
+      this.setState({
+        haveSearched: true,
+        locationData: locationRawData.data[0],
+      });
+    } catch (err) {
+      this.setState({ error: err.message });
+    }
   }
-
   render(){
     return(
       <>
@@ -29,6 +32,7 @@ class App extends React.Component{
       <Search handleSearch={this.handleSearch} />
       {this.state.haveSearched ? 
         <Location data={this.state.locationData} /> : 'Search for a location to see info.'}
+      {this.state.error ? <h2>{this.state.error}</h2> : ''}
       </>
     )
   }
