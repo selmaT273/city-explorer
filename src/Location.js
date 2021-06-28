@@ -12,8 +12,10 @@ class Location extends React.Component{
     render(){
         return(
             <>
-            <h2>location info</h2>
+            <h2>Location Information:</h2>
             <h3>{this.props.data.display_name}</h3>
+            <h4>{this.state.latitude}</h4>
+            <h4>{this.state.longitude}</h4>
             </>
         );
     }

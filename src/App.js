@@ -19,6 +19,7 @@ class App extends React.Component{
     this.setState({
       haveSearched: true,
       locationData: locationRawData.data[0],
+      locationAPIKey: locationKey
     });
   }
 
@@ -28,7 +29,7 @@ class App extends React.Component{
       <h1>City Explorer</h1>
       <Search handleSearch={this.handleSearch} />
       {this.state.haveSearched ? 
-        <Location data={this.state.locationData} /> : 'Search for a location to see info.'}
+        <Location data={this.state.locationData} key={this.locationKey} /> : 'Search for a location to see info.'}
       </>
     )
   }
