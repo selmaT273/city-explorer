@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Search from './Search';
+import axios from 'axios'
 
 class App extends React.Component{
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends React.Component{
     }
   }
 
-  handleSearch = (searchBarText) => {
+  handleSearch = async(searchBarText) => {
     console.log('searched');
     console.log(searchBarText);
     this.setState({
