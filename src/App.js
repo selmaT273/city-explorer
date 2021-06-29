@@ -3,6 +3,7 @@ import React from 'react';
 import Search from './Search';
 import axios from 'axios';
 import Location from './Location';
+import Weather from './Weather';
 
 const locationKey = process.env.REACT_APP_LOCATION_KEY;
 class App extends React.Component{
@@ -24,6 +25,9 @@ class App extends React.Component{
     } catch (err) {
       this.setState({ error: err.message });
     }
+    
+    const weatherData = await axios.get('http://localhost:3000/weather');
+    console.log(weatherData);
   }
   
   render(){
@@ -33,7 +37,11 @@ class App extends React.Component{
         <h1>City Explorer</h1>
         <Search handleSearch={this.handleSearch} />
         {this.state.haveSearched ? 
-          <Location data={this.state.locationData} /> : 'Search for a location to see info.'}
+          <section>
+            <Location data={this.state.locationData} />
+            <Weather />
+          </section>
+          : 'Search for a location to see info.'}
         {this.state.error ? <h2>{this.state.error}</h2> : ''}
       </section>
       </>
