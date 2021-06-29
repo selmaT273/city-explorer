@@ -28,11 +28,13 @@ class App extends React.Component{
   render(){
     return(
       <>
-      <h1>City Explorer</h1>
-      <Search handleSearch={this.handleSearch} />
-      {this.state.haveSearched ? 
-        <Location data={this.state.locationData} /> : 'Search for a location to see info.'}
-      {this.state.error ? <h2>{this.state.error}</h2> : ''}
+      <section className="search-component">
+        <h1>City Explorer</h1>
+        <Search handleSearch={this.handleSearch} />
+        {this.state.haveSearched ? 
+          <Location data={this.state.locationData} /> : 'Search for a location to see info.'}
+        {this.state.error ? <h2>{this.state.error}</h2> : ''}
+      </section>
       </>
     )
   }
