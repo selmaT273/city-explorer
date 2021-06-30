@@ -17,12 +17,19 @@ class App extends React.Component{
     };
   }
 
-  handleSearch = async(searchBarText) => {
+  handleSearch = (searchBarText) => {
     try {
-      const locationRawData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${searchBarText}&format=json`);
-      this.setState({
-        locationData: locationRawData.data[0],
-      });
+      axios.get(`https://us1.locationiq.com/v1/search.php?&format=json`,
+        {params: {
+          key: locationKey,
+          q: searchBarText,
+        }})
+        .then(locationRawData => {
+          this.setState({
+            locationData: locationRawData.data[0],
+          });
+          console.log(this.state.locationData);
+        });
       this.handleWeather();
     } catch (err) {
       this.setState({ error: err.message });
