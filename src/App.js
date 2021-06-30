@@ -12,6 +12,7 @@ class App extends React.Component{
     this.state={
         haveSearched: false,
         locationData: '',
+        weatherData: [],
     }
   }
 
@@ -22,12 +23,15 @@ class App extends React.Component{
         haveSearched: true,
         locationData: locationRawData.data[0],
       });
+      this.handleWeather();
     } catch (err) {
       this.setState({ error: err.message });
     }
-    
-    const weatherData = await axios.get('http://localhost:3000/weather');
-    console.log(weatherData);
+  }
+
+  handleWeather = async () => {
+    const weatherRawData = await axios.get('http://localhost:3000/weather');
+    console.log(weatherRawData);
   }
   
   render(){
@@ -39,7 +43,7 @@ class App extends React.Component{
         {this.state.haveSearched ? 
           <section>
             <Location data={this.state.locationData} />
-            <Weather />
+            <Weather weather={this.handleWeather}/>
           </section>
           : 'Search for a location to see info.'}
         {this.state.error ? <h2>{this.state.error}</h2> : ''}
