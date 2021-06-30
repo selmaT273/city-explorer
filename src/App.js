@@ -29,8 +29,8 @@ class App extends React.Component{
             locationData: locationRawData.data[0],
           });
           // console.log(this.state.locationData);
+          this.handleWeather();
         });
-      this.handleWeather();
     } catch (err) {
       this.setState({ error: err.message });
     }
@@ -38,7 +38,7 @@ class App extends React.Component{
 
   handleWeather = () => {
     try {
-      axios.get(`${backendURL}/weather`)
+      return axios.get(`${backendURL}/weather`).query({ lat: location.lat })
         .then(weatherData => {
           this.setState({
             haveSearched: true,
