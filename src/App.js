@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import React from 'react';
 import Search from './Search';
 import axios from 'axios';
@@ -6,14 +6,15 @@ import Location from './Location';
 import Weather from './Weather';
 
 const locationKey = process.env.REACT_APP_LOCATION_KEY;
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 class App extends React.Component{
   constructor(props) {
     super(props);
     this.state={
-        haveSearched: false,
-        locationData: '',
-        weatherData: [],
-    }
+      haveSearched: false,
+      locationData: '',
+      weatherData: [],
+    };
   }
 
   handleSearch = async(searchBarText) => {
@@ -29,20 +30,20 @@ class App extends React.Component{
   }
 
   handleWeather = async () => {
-    const weatherRawData = await axios.get('http://localhost:3000/weather');
+    const weatherRawData = await axios.get(`${backendURL}`);
     this.setState({
       haveSearched: true,
       weatherData: weatherRawData.data,
-    })
+    });
   }
-  
+
   render(){
     return(
       <>
         <section className="search-component">
           <h1>City Explorer</h1>
           <Search handleSearch={this.handleSearch} />
-          {this.state.haveSearched ? 
+          {this.state.haveSearched ?
             <section>
               <Location data={this.state.locationData} />
               <Weather weather={this.state.weatherData}/>
@@ -51,7 +52,7 @@ class App extends React.Component{
           {this.state.error ? <h2>{this.state.error}</h2> : ''}
         </section>
       </>
-    )
+    );
   }
 }
 

@@ -7,7 +7,7 @@ class Search extends React.Component {
     super(props);
     this.state = {
       searchBarText: '',
-    }
+    };
   }
 
   handleText = (e) => {
@@ -27,7 +27,7 @@ class Search extends React.Component {
         <Form.Control type="text" onChange={this.handleText} value={this.state.searchBarText} />
         <Button className="button" type="submit" variant="secondary">Explore!</Button>
       </Form>
-    )
+    );
   }
 }
 
