@@ -18,37 +18,35 @@ class App extends React.Component{
   }
 
   handleSearch = (searchBarText) => {
-    try {
-      axios.get(`https://us1.locationiq.com/v1/search.php?&format=json`,
-        {params: {
-          key: locationKey,
-          q: searchBarText,
-        }})
-        .then(locationRawData => {
-          this.setState({
-            locationData: locationRawData.data[0],
-          });
-          // console.log(this.state.locationData);
-          this.handleWeather();
+    return axios.get(`https://us1.locationiq.com/v1/search.php?&format=json`,
+      {params: {
+        key: locationKey,
+        q: searchBarText,
+      }})
+      .then(locationRawData => {
+        this.setState({
+          locationData: locationRawData.data[0],
         });
-    } catch (err) {
-      this.setState({ error: err.message });
-    }
+        // console.log(this.state.locationData);
+        this.handleWeather();
+      })
+      .catch(err => {
+        this.setState({ error: err.message });
+      });
   }
 
   handleWeather = () => {
-    try {
-      return axios.get(`${backendURL}/weather`).query({ lat: location.lat })
-        .then(weatherData => {
-          this.setState({
-            haveSearched: true,
-            weatherData: weatherData.data,
-          });
-          console.log(this.state.weatherData);
+    return axios.get(`${backendURL}/weather`)
+      .then(weatherData => {
+        this.setState({
+          haveSearched: true,
+          weatherData: weatherData.data,
         });
-    } catch (err) {
-      this.setState({ error: err.message });
-    }
+        console.log(this.state.weatherData);
+      })
+      .catch(err => {
+        this.setState({ error: err.message});
+      });
   }
 
   render(){
