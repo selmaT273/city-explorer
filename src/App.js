@@ -36,7 +36,11 @@ class App extends React.Component{
   }
 
   handleWeather = () => {
-    return axios.get(`${backendURL}/weather`)
+    return axios.get(`${backendURL}/weather`,
+      {params: {
+        lat: this.state.locationData.lat,
+        lon: this.state.locationData.lon,
+      }})
       .then(weatherData => {
         this.setState({
           haveSearched: true,
