@@ -27,8 +27,8 @@ class App extends React.Component{
         this.setState({
           locationData: locationRawData.data[0],
         });
-        // console.log(this.state.locationData);
         this.handleWeather();
+        this.handleMovies();
       })
       .catch(err => {
         this.setState({ error: err.message });
@@ -50,6 +50,18 @@ class App extends React.Component{
       })
       .catch(err => {
         this.setState({ error: err.message});
+      });
+  }
+
+  handleMovies = () => {
+    const displayName = this.state.locationData.display_name;
+    const queriedCity = displayName.substring(0, displayName.indexOf(','));
+    return axios.get(`${backendURL}/movies`,
+      {params: {
+        search_query: queriedCity,
+      }})
+      .then(movieData => {
+        console.log(movieData);
       });
   }
 
