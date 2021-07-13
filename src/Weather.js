@@ -14,7 +14,6 @@ class Weather extends React.Component {
                 weather={day}
               />)
             )}
-            <WeatherDay weather={this.props.weather} />
           </>
         }
       </>
