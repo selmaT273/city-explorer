@@ -4,6 +4,7 @@ import Search from './Search';
 import axios from 'axios';
 import Location from './Location';
 import Weather from './Weather';
+import Movies from './Movies';
 
 const locationKey = process.env.REACT_APP_LOCATION_KEY;
 const backendURL = process.env.REACT_APP_BACKEND_URL;
@@ -14,6 +15,7 @@ class App extends React.Component{
       haveSearched: false,
       locationData: '',
       weatherData: [],
+      movieData: [],
     };
   }
 
@@ -61,7 +63,10 @@ class App extends React.Component{
         search_query: queriedCity,
       }})
       .then(movieData => {
-        console.log(movieData);
+        this.setState({
+          movieData: movieData.data,
+        });
+        console.log(this.state.movieData);
       });
   }
 
@@ -75,6 +80,7 @@ class App extends React.Component{
             <section>
               <Location data={this.state.locationData} />
               <Weather weather={this.state.weatherData}/>
+              <Movies movies={this.state.movieData}/>
             </section>
             : 'Search for a location to see info.'}
           {this.state.error ? <h2>{this.state.error}</h2> : ''}
