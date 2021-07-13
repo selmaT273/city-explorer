@@ -48,7 +48,6 @@ class App extends React.Component{
           haveSearched: true,
           weatherData: weatherData.data,
         });
-        console.log(this.state.weatherData);
       })
       .catch(err => {
         this.setState({ error: err.message});
@@ -66,7 +65,9 @@ class App extends React.Component{
         this.setState({
           movieData: movieData.data,
         });
-        console.log(this.state.movieData);
+      })
+      .catch(err => {
+        this.setState({ error: err.message});
       });
   }
 
