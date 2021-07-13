@@ -4,6 +4,7 @@ import Search from './Search';
 import axios from 'axios';
 import Location from './Location';
 import Weather from './Weather';
+import Movies from './Movies';
 
 const locationKey = process.env.REACT_APP_LOCATION_KEY;
 const backendURL = process.env.REACT_APP_BACKEND_URL;
@@ -14,27 +15,60 @@ class App extends React.Component{
       haveSearched: false,
       locationData: '',
       weatherData: [],
+      movieData: [],
     };
   }
 
-  handleSearch = async(searchBarText) => {
-    try {
-      const locationRawData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${searchBarText}&format=json`);
-      this.setState({
-        locationData: locationRawData.data[0],
+  handleSearch = (searchBarText) => {
+    return axios.get(`https://us1.locationiq.com/v1/search.php?&format=json`,
+      {params: {
+        key: locationKey,
+        q: searchBarText,
+      }})
+      .then(locationRawData => {
+        this.setState({
+          locationData: locationRawData.data[0],
+        });
+        this.handleWeather();
+        this.handleMovies();
+      })
+      .catch(err => {
+        this.setState({ error: err.message });
       });
-      this.handleWeather();
-    } catch (err) {
-      this.setState({ error: err.message });
-    }
   }
 
-  handleWeather = async () => {
-    const weatherRawData = await axios.get(`${backendURL}/weather`);
-    this.setState({
-      haveSearched: true,
-      weatherData: weatherRawData.data,
-    });
+  handleWeather = () => {
+    return axios.get(`${backendURL}/weather`,
+      {params: {
+        lat: this.state.locationData.lat,
+        lon: this.state.locationData.lon,
+      }})
+      .then(weatherData => {
+        this.setState({
+          haveSearched: true,
+          weatherData: weatherData.data,
+        });
+      })
+      .catch(err => {
+        this.setState({ error: err.message});
+      });
+  }
+
+  handleMovies = () => {
+    const displayName = this.state.locationData.display_name;
+    const queriedCity = displayName.substring(0, displayName.indexOf(','));
+    return axios.get(`${backendURL}/movies`,
+      {params: {
+        search_query: queriedCity,
+      }})
+      .then(movieData => {
+        this.setState({
+          movieData: movieData.data,
+        });
+      })
+      .catch(err => {
+        this.setState({ error: err.message});
+      });
   }
 
   render(){
@@ -47,6 +81,7 @@ class App extends React.Component{
             <section>
               <Location data={this.state.locationData} />
               <Weather weather={this.state.weatherData}/>
+              <Movies movies={this.state.movieData}/>
             </section>
             : 'Search for a location to see info.'}
           {this.state.error ? <h2>{this.state.error}</h2> : ''}
